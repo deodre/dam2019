@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerCazareID"
+        android:entries="@array/tipuri_cazare"
+        android:spinnerMode="dialog"
+        android:background="@color/colorAccent">
+    </Spinner>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/cazareListViewID"
+        android:background="@color/White"
+        android:divider="@color/Black"
+        android:dividerHeight="4px">
+    </ListView>
+
+</LinearLayout>

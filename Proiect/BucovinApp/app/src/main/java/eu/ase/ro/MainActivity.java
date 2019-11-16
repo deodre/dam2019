@@ -1,0 +1,54 @@
+package eu.ase.ro;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.os.Bundle;
+import android.view.MenuItem;
+
+import com.google.android.material.navigation.NavigationView;
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private DrawerLayout drawerLayout;
+    private Toolbar toolbar;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        toolbar = findViewById(R.id.toolbarID);
+        setSupportActionBar(toolbar);
+        NavigationView navigationView =findViewById(R.id.navigationID);
+        drawerLayout =findViewById(R.id.drawerID);
+        navigationView.setNavigationItemSelectedListener(this);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameID, new ObiectiveTuristiceFragment()).commit();
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.obiectiveDrawerMenuID:
+                getSupportFragmentManager().beginTransaction().replace(R.id.frameID,new ObiectiveTuristiceFragment()).commit();
+                toolbar.setTitle("Obiective Turistice");
+                setSupportActionBar(toolbar);
+                break;
+            case R.id.cazareDraweMenuID:
+                getSupportFragmentManager().beginTransaction().replace(R.id.frameID,new CazareFragment()).commit();
+                toolbar.setTitle("Cazare");
+                setSupportActionBar(toolbar);
+                break;
+            case R.id.restauranteDrawerMenuID:
+                getSupportFragmentManager().beginTransaction().replace(R.id.frameID,new RestauranteFragment()).commit();
+                toolbar.setTitle("Restaurante");
+                setSupportActionBar(toolbar);
+                break;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+}

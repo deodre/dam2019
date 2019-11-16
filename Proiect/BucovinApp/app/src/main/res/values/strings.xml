@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">BucovinApp</string>
+    <string name="obiective_turistice_drawer_menu">Obiective Turistice</string>
+    <string name="cazare_drawer_menu">Cazare</string>
+    <string name="restaurante_drawer_menu">Restaurante</string>
+    <string name="cazare_text_drawer_menu">Cazare</string>
+    <string name="obiective_turistice_text_drawer_menu">Obiective Turistice</string>
+    <string name="restaurante_text_drawer_menu">Restaurante</string>
+    <string name="adauga_recenzie_text_toolbar">Adauga Recenzie</string>
+    <string name="adaugati_o_recenzie_hint_edit_text">Adaugati o recenzie...</string>
+    <string name="trimite_recenzie_text_buton">Trimite Recenzie</string>
+    <string name="anulare_trimitere_recenzie_text_buton">Anulare</string>
+    <string name="nume_text_rezervare">Nume</string>
+    <string name="nume_hint_rezervare">Nume</string>
+    <string name="prenume_text_rezervare">Prenume</string>
+    <string name="prenume_hint_rezervare">Prenume</string>
+    <string name="check_in_text_rezervare">Check-in</string>
+    <string name="check_out_text_rezervare">Check-out</string>
+    <string name="familie_cu_copil_text_check_box_rezervare">Familie cu copil</string>
+    <string name="rezervare_text_toolbar">Rezerva camera</string>
+    <string name="text_buton_start_activity">START</string>
+    <string name="app_title_start_activity">BUCOVINAPP</string>
+    <string name="trimite_rezervare_text_buton">Trimite rezervare</string>
+    <string name="anulare_rezervare_text_buton">Anulare rezervare</string>
+    <string name="welcome_text_start_activity">Bine ati venit!</string>
+
+    <array name="tipuri_cazare">
+        <item>Toate</item>
+        <item>Hotel</item>
+        <item>Pensiune</item>
+    </array>
+</resources>

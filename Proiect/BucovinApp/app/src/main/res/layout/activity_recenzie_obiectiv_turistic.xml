@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RecenzieObiectivTuristic">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/adauga_recenzie_text_toolbar"
+        android:id="@+id/recenzieToolbarID"
+        android:background="@color/colorPrimary"
+        app:titleTextColor="@color/White">
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/obiectivTuristicPrimitTV"
+        android:textColor="@color/Black"
+        >
+    </TextView>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/adaugati_o_recenzie_hint_edit_text"
+        android:id="@+id/recenzieET">
+    </EditText>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/trimiteRecenzieButonID"
+        android:text="@string/trimite_recenzie_text_buton"
+        android:onClick="metodaTrimiteRecenzie">
+    </Button>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/anulareTrimiteRecenzieButonID"
+        android:text="@string/anulare_trimitere_recenzie_text_buton"
+        android:onClick="metodaAnulare">
+    </Button>
+</LinearLayout>
