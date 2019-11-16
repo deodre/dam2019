@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Seminar_2</string>
+    <string name="producatorText">Producator</string>
+    <string name="greutateText">Greutate</string>
+    <string name="eliceText">Numar Elice</string>
+    <string name="areCamera">Are Camera</string>
+    <string name="culoareText">Culoare</string>
+    <string name="albText">Alb</string>
+    <string name="negruText">Negru</string>
+    <string name="griText">Gri</string>
+    <string name="salveazaDrona">Salveaza Drona</string>
+    <string name="buttonText">Create</string>
+</resources>

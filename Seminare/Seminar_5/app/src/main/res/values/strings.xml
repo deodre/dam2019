@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Seminar_5</string>
+    <string name="buton_apasa">Apasa</string>
+    <string name="buton_ok">OK</string>
+    <string name="buton_cancel">Cancel</string>
+    <string name="toast_canceled">Utilizatorul a renuntat la modificari</string>
+
+    <array name="elemente">
+        <item>element 1</item>
+        <item>element 2</item>
+        <item>element 3</item>
+    </array>
+</resources>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Seminar_6</string>
+    <string name="text_buton_ok">OK</string>
+    <string name="text_buton_cancel">Cancel</string>
+</resources>
