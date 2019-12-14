@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -47,6 +48,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 toolbar.setTitle("Restaurante");
                 setSupportActionBar(toolbar);
                 break;
+            case R.id.userDrawerMenuID:
+                Intent intent = new Intent(this, UserProfile.class);
+                startActivity(intent);
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

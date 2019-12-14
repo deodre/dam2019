@@ -7,7 +7,7 @@
     <string name="obiective_turistice_text_drawer_menu">Obiective Turistice</string>
     <string name="restaurante_text_drawer_menu">Restaurante</string>
     <string name="adauga_recenzie_text_toolbar">Adauga Recenzie</string>
-    <string name="adaugati_o_recenzie_hint_edit_text">Adaugati o recenzie...</string>
+    <string name="adaugati_o_recenzie_hint_edit_text">Adaugati o recenzie&#8230;</string>
     <string name="trimite_recenzie_text_buton">Trimite Recenzie</string>
     <string name="anulare_trimitere_recenzie_text_buton">Anulare</string>
     <string name="nume_text_rezervare">Nume</string>
@@ -18,11 +18,18 @@
     <string name="check_out_text_rezervare">Check-out</string>
     <string name="familie_cu_copil_text_check_box_rezervare">Familie cu copil</string>
     <string name="rezervare_text_toolbar">Rezerva camera</string>
-    <string name="text_buton_start_activity">START</string>
+    <string name="text_buton_login_activity">LOG IN</string>
     <string name="app_title_start_activity">BUCOVINAPP</string>
     <string name="trimite_rezervare_text_buton">Trimite rezervare</string>
     <string name="anulare_rezervare_text_buton">Anulare rezervare</string>
     <string name="welcome_text_start_activity">Bine ati venit!</string>
+    <string name="utilizator_drawer_menu">Utilizator</string>
+    <string name="username_start_activity">Username</string>
+    <string name="password_start_activity">Password</string>
+    <string name="keep_me_as_logged_in">Keep me as logged in</string>
+    <string name="log_out_button">Log Out</string>
+    <string name="rezervari_raport_buton">Rezervarile dumneavoastra</string>
+    <string name="recenzii_raport_buton">Recenziile dumneavoastra</string>
 
     <array name="tipuri_cazare">
         <item>Toate</item>

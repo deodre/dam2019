@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/obiectiveDrawerMenuID"
-        android:title="@string/obiective_turistice_drawer_menu"
-        android:icon="@drawable/ic_monument_drawer_menu">
-    </item>
+    <group android:id="@+id/drawerMenuSections">
+        <item android:id="@+id/obiectiveDrawerMenuID"
+            android:title="@string/obiective_turistice_drawer_menu"
+            android:icon="@drawable/ic_monument_drawer_menu">
+        </item>
 
-    <item android:id="@+id/cazareDraweMenuID"
-        android:title="@string/cazare_drawer_menu"
-        android:icon="@drawable/ic_cazare_drawer_menu">
-    </item>
+        <item android:id="@+id/cazareDraweMenuID"
+            android:title="@string/cazare_drawer_menu"
+            android:icon="@drawable/ic_cazare_drawer_menu">
+        </item>
 
-    <item android:id="@+id/restauranteDrawerMenuID"
-        android:title="@string/restaurante_drawer_menu"
-        android:icon="@drawable/ic_restaurant_drawer_menu">
-    </item>
+        <item android:id="@+id/restauranteDrawerMenuID"
+            android:title="@string/restaurante_drawer_menu"
+            android:icon="@drawable/ic_restaurant_drawer_menu">
+        </item>
+    </group>
+
+    <group>
+        <item
+            android:id="@+id/userDrawerMenuID"
+            android:title="@string/utilizator_drawer_menu"
+            android:icon="@drawable/ic_account_circle_black_24dp">
+        </item>
+    </group>
+
+
+
 </menu>
