@@ -2,6 +2,7 @@ package eu.ase.ro;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -34,71 +36,72 @@ public class CazareFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.cazare_fragment,container,false);
         locatiiCazare = new ArrayList<>();
-        hoteluri = new ArrayList<>();
-        pensiuni = new ArrayList<>();
-        locatiiCazare.add(new Cazare("Hotel Residenz", "Hotel", 500, "Strada Nicolae Iorga 6A, Suceava"));
-        hoteluri.add(new Cazare("Hotel Residenz", "Hotel", 500, "Strada Nicolae Iorga 6A, Suceava"));
-        locatiiCazare.add(new Cazare("Casa Bucovineana", "Pensiune", 90, "Strada Petru Rares 57B, Suceava"));
-        pensiuni.add(new Cazare("Casa Bucovineana", "Pensiune", 90, "Strada Petru Rares 57B, Suceava"));
-        locatiiCazare.add(new Cazare("Hanul Vanatorului", "Pensiune", 150, "Bulevardul Bucovina Numarul 290, Gura Humorului"));
-        pensiuni.add(new Cazare("Hanul Vanatorului", "Pensiune", 150, "Bulevardul Bucovina Numarul 290, Gura Humorului"));
-        locatiiCazare.add(new Cazare("Hotel Rubin", "Hotel", 350, "Bulevardul Bucovina Numarul 105A, Gura Humorului"));
-        hoteluri.add(new Cazare("Hotel Rubin", "Hotel", 350, "Bulevardul Bucovina Numarul 105A, Gura Humorului"));
 
-
-        final ListView listView = view.findViewById(R.id.cazareListViewID);
-        CazareAdapter cazareAdapter = new CazareAdapter(getActivity(),R.layout.cazare_item_layout, locatiiCazare);
-        listView.setAdapter(cazareAdapter);
-
-        Spinner spinner = view.findViewById(R.id.spinnerCazareID);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        GetJSONCazare getJSONCazare = new GetJSONCazare() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position == 0) {
+            protected void onPostExecute(List<Cazare> cazares) {
+                for(Cazare cazare : cazares) {
+                    locatiiCazare.add(cazare);
+
+                    final ListView listView = view.findViewById(R.id.cazareListViewID);
                     CazareAdapter cazareAdapter = new CazareAdapter(getActivity(),R.layout.cazare_item_layout, locatiiCazare);
                     listView.setAdapter(cazareAdapter);
-                    listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                        @Override
-                        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                            Intent intent = new Intent(getActivity(),RezervareCazare.class);
-                            intent.putExtra("Cazare", locatiiCazare.get(position));
-                            startActivityForResult(intent, requestCode);
-                            return true;
-                        }
-                    });
 
-                } else if(position == 1) {
-                    CazareAdapter hoteluriAdapter = new CazareAdapter(getActivity(),R.layout.cazare_item_layout, hoteluri);
-                    listView.setAdapter(hoteluriAdapter);
-                    listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    Spinner spinner = view.findViewById(R.id.spinnerCazareID);
+                    spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
-                        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                            Intent intent = new Intent(getActivity(),RezervareCazare.class);
-                            intent.putExtra("Cazare", hoteluri.get(position));
-                            startActivityForResult(intent, requestCode);
-                            return true;
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            if(position == 0) {
+                                CazareAdapter cazareAdapter = new CazareAdapter(getActivity(),R.layout.cazare_item_layout, locatiiCazare);
+                                listView.setAdapter(cazareAdapter);
+                                listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                                    @Override
+                                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                                        Intent intent = new Intent(getActivity(),RezervareCazare.class);
+                                        intent.putExtra("Cazare", locatiiCazare.get(position));
+                                        startActivityForResult(intent, requestCode);
+                                        return true;
+                                    }
+                                });
+
+                            } else if(position == 1) {
+                                List<Cazare> hoteluri = locatiiCazare.stream().filter(cazare -> cazare.getTip().contains("Hotel")).collect(Collectors.toList());
+                                CazareAdapter hoteluriAdapter = new CazareAdapter(getActivity(),R.layout.cazare_item_layout, hoteluri);
+                                listView.setAdapter(hoteluriAdapter);
+                                listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                                    @Override
+                                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                                        Intent intent = new Intent(getActivity(),RezervareCazare.class);
+                                        intent.putExtra("Cazare", hoteluri.get(position));
+                                        startActivityForResult(intent, requestCode);
+                                        return true;
+                                    }
+                                });
+                            } else {
+                                List<Cazare> pensiuni = locatiiCazare.stream().filter(cazare -> cazare.getTip().contains("Pensiune")).collect(Collectors.toList());
+                                CazareAdapter pensiuniAdapter = new CazareAdapter(getActivity(),R.layout.cazare_item_layout, pensiuni);
+                                listView.setAdapter(pensiuniAdapter);
+                                listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                                    @Override
+                                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                                        Intent intent = new Intent(getActivity(),RezervareCazare.class);
+                                        intent.putExtra("Cazare", pensiuni.get(position));
+                                        startActivityForResult(intent, requestCode);
+                                        return true;
+                                    }
+                                });
+                            }
                         }
-                    });
-                } else {
-                    CazareAdapter pensiuniAdapter = new CazareAdapter(getActivity(),R.layout.cazare_item_layout, pensiuni);
-                    listView.setAdapter(pensiuniAdapter);
-                    listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
                         @Override
-                        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                            Intent intent = new Intent(getActivity(),RezervareCazare.class);
-                            intent.putExtra("Cazare", pensiuni.get(position));
-                            startActivityForResult(intent, requestCode);
-                            return true;
+                        public void onNothingSelected(AdapterView<?> parent) {
+
                         }
                     });
                 }
             }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+        };
+        getJSONCazare.execute("https://api.myjson.com/bins/y2a3k");
 
         return view;
     }

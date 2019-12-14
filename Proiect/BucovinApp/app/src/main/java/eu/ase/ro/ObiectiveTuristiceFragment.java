@@ -2,6 +2,7 @@ package eu.ase.ro;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,26 +28,31 @@ public class ObiectiveTuristiceFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.obiective_turistice_fragment,container,false);
+        final View view = inflater.inflate(R.layout.obiective_turistice_fragment,container,false);
         obiective = new ArrayList<>();
-        obiective.add(new ObiectivTuristic("Manastirea Voronet","Complex Monahal Medieval", 1488));
-        obiective.add(new ObiectivTuristic("Cetatea De Scaun ","Cetate Medievala", 1391));
-        obiective.add(new ObiectivTuristic("Manastirea Putna","Complex Monahal Medieval", 1469));
 
-        ListView listView = (ListView)view.findViewById(R.id.obiectiveTuristiceListViewID);
-        ObiectivTuristicAdapter obiectivTuristicAdapter = new ObiectivTuristicAdapter(getActivity(),R.layout.obiectiv_turistic_item_layout, obiective);
-        listView.setAdapter(obiectivTuristicAdapter);
-
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        GetJSONObiectiveTuristice getJSONObiectiveTuristice = new GetJSONObiectiveTuristice() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(),RecenzieObiectivTuristic.class);
-                intent.putExtra("Obiectiv Turistic", obiective.get(position));
-                startActivityForResult(intent, requestCode);
-                return  true;
-            }
-        });
+            protected void onPostExecute(List<ObiectivTuristic> obiectivTuristics) {
+                for(ObiectivTuristic obiectiv : obiectivTuristics) {
+                    obiective.add(obiectiv);
+                    ListView listView = (ListView)view.findViewById(R.id.obiectiveTuristiceListViewID);
+                    ObiectivTuristicAdapter obiectivTuristicAdapter = new ObiectivTuristicAdapter(getActivity(),R.layout.obiectiv_turistic_item_layout, obiective);
+                    listView.setAdapter(obiectivTuristicAdapter);
 
+                    listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                        @Override
+                        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                            Intent intent = new Intent(getActivity(),RecenzieObiectivTuristic.class);
+                            intent.putExtra("Obiectiv Turistic", obiective.get(position));
+                            startActivityForResult(intent, requestCode);
+                            return  true;
+                        }
+                    });
+                }
+            }
+        };
+        getJSONObiectiveTuristice.execute("https://api.myjson.com/bins/y2a3k");
         return view;
     }
 
