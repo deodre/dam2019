@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "27128320057",
+    "firebase_url": "https://seminar-11-c20c9.firebaseio.com",
+    "project_id": "seminar-11-c20c9",
+    "storage_bucket": "seminar-11-c20c9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:27128320057:android:2a70f4773e9a84573ffde8",
+        "android_client_info": {
+          "package_name": "eu.ase.ro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "27128320057-654upipmurrefailgrsoptlavgqikg9u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "eu.ase.ro",
+            "certificate_hash": "726335df57d6071c543de99d93d95dfd061f801e"
+          }
+        },
+        {
+          "client_id": "27128320057-pvrgmtqhkqcrgg63h52hb911si9ubkso.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxKOOa4smadl0iaN21-hfV2niVJ201pWU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "27128320057-pvrgmtqhkqcrgg63h52hb911si9ubkso.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

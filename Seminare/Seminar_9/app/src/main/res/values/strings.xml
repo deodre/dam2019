@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Seminar_9</string>
+    <string name="salveaza_shared">Salveaza shared</string>
+    <string name="citeste_shared">Citeste shared</string>
+    <string name="plus_sign">+</string>
+    <string name="minus_sign">-</string>
+</resources>
