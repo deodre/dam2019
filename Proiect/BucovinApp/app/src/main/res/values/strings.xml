@@ -28,8 +28,26 @@
     <string name="password_start_activity">Password</string>
     <string name="keep_me_as_logged_in">Keep me as logged in</string>
     <string name="log_out_button">Log Out</string>
-    <string name="rezervari_raport_buton">Rezervarile dumneavoastra</string>
+    <string name="recenzii_pozitive">Recenzii pozitive</string>
     <string name="recenzii_raport_buton">Recenziile dumneavoastra</string>
+    <string name="registerButonID">Register</string>
+    <string name="username_register">Username:</string>
+    <string name="email_register">Email:</string>
+    <string name="nume_text_register">Nume:</string>
+    <string name="prenume_text_register">Prenume:</string>
+    <string name="username_text_register">Username:</string>
+    <string name="parola_text_register">Parola:</string>
+    <string name="email_text_register">Email:</string>
+    <string name="register_button">Register</string>
+    <string name="confirm_password_text_register">Confirm Password</string>
+    <string name="change_password">Change Password</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="parola_veche">Parola veche</string>
+    <string name="parola_noua">Parola noua</string>
+    <string name="salveaza_modificari">Salveaza modificari</string>
+    <string name="anulare_schimbare_parola">Anulare</string>
+    <string name="recenzie_modificare_text">Recenzie :</string>
+    <string name="salveaza_rapoarte">Salveaza Rapoarte</string>
 
     <array name="tipuri_cazare">
         <item>Toate</item>

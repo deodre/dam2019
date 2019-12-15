@@ -8,11 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +33,10 @@ public class ObiectiveTuristiceFragment extends Fragment {
 
         final View view = inflater.inflate(R.layout.obiective_turistice_fragment,container,false);
         obiective = new ArrayList<>();
+        NavigationView navigationView = (NavigationView) getActivity().findViewById(R.id.navigationID);
+        View headerView = navigationView.getHeaderView(0);
+        TextView credentials = (TextView)headerView.findViewById(R.id.credentialsTV);
+        String username = credentials.getText().toString();
 
         GetJSONObiectiveTuristice getJSONObiectiveTuristice = new GetJSONObiectiveTuristice() {
             @Override
@@ -43,8 +50,9 @@ public class ObiectiveTuristiceFragment extends Fragment {
                     listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                         @Override
                         public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                            Intent intent = new Intent(getActivity(),RecenzieObiectivTuristic.class);
+                            Intent intent = new Intent(getActivity(), RecenzieObiectivTuristic.class);
                             intent.putExtra("Obiectiv Turistic", obiective.get(position));
+                            intent.putExtra("credentials", username);
                             startActivityForResult(intent, requestCode);
                             return  true;
                         }

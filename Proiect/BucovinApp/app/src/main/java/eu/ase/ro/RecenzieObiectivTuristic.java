@@ -2,16 +2,23 @@ package eu.ase.ro;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.room.Room;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.circularreveal.CircularRevealWidget;
+
 public class RecenzieObiectivTuristic extends AppCompatActivity {
+
+    private Database database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +27,8 @@ public class RecenzieObiectivTuristic extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.recenzieToolbarID);
         setSupportActionBar(toolbar);
+
+        database = Room.databaseBuilder(this, Database.class, "Recenzii").allowMainThreadQueries().build();
 
         Intent intent = getIntent();
         ObiectivTuristic obiectivTuristic = intent.getParcelableExtra("Obiectiv Turistic");
@@ -31,14 +40,21 @@ public class RecenzieObiectivTuristic extends AppCompatActivity {
     public void metodaTrimiteRecenzie(View view) {
         Intent intent = getIntent();
         ObiectivTuristic obiectivTuristic = intent.getParcelableExtra("Obiectiv Turistic");
+        String username = intent.getStringExtra("credentials");
+        database = Room.databaseBuilder(this, Database.class, "Users").allowMainThreadQueries().build();
+        User user = database.getUserDAO().selectSearchUserByUsername(username);
         String textRecenzie = ((EditText)findViewById(R.id.recenzieET)).getText().toString();
+        RatingBar ratingBar = findViewById(R.id.ratingBarRecenzie);
+        float rating = ratingBar.getRating();
         textRecenzie = textRecenzie.trim();
         if(textRecenzie.equals("") ) {
             Toast.makeText(this,"Completati campul liber cu o recenzie", Toast.LENGTH_SHORT).show();
         } else {
-            StringBuilder recenzie = new StringBuilder();
-            recenzie.append(textRecenzie).append(" - ").append(obiectivTuristic.toString());
-            String trimiteRecenzie = recenzie.toString();
+            Recenzie recenzie = new Recenzie(textRecenzie, rating, user.getId());
+            database.getRecenzieDAO().insertRecenzie(recenzie);
+            StringBuilder recenzieStringTrimis = new StringBuilder();
+            recenzieStringTrimis.append(textRecenzie).append(" - ").append(obiectivTuristic.toString()).append(" - ").append(rating);
+            String trimiteRecenzie = recenzieStringTrimis.toString();
             intent.putExtra("Recenzie", trimiteRecenzie);
             setResult(RESULT_OK, intent);
             finish();

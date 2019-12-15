@@ -11,54 +11,85 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="376dp"
-        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.081" />
 
     <Button
         android:id="@+id/recenziiButtonID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="metodaGetRecenzii"
         android:text="@string/recenzii_raport_buton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iformatiiUtilizatorTV"
-        app:layout_constraintVertical_bias="0.204" />
+        app:layout_constraintVertical_bias="0.523" />
 
     <Button
-        android:id="@+id/rezervariButtonID"
+        android:id="@+id/recenziiPozitiveButtonID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/rezervari_raport_buton"
+        android:onClick="metodaReceneziiPozitive"
+        android:text="@string/recenzii_pozitive"
         app:layout_constraintBottom_toTopOf="@+id/logOutButtonID"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recenziiButtonID" />
+        app:layout_constraintTop_toBottomOf="@+id/recenziiButtonID"
+        app:layout_constraintVertical_bias="0.255" />
 
     <Button
         android:id="@+id/logOutButtonID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/log_out_button"
         android:onClick="metodaLogOut"
+        android:text="@string/log_out_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recenziiButtonID" />
+        app:layout_constraintTop_toBottomOf="@+id/recenziiButtonID"
+        app:layout_constraintVertical_bias="0.873" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="262dp"
-        android:layout_height="217dp"
-        app:layout_constraintBottom_toTopOf="@+id/iformatiiUtilizatorTV"
+        android:layout_width="151dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="88dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.344"
         app:srcCompat="@drawable/ic_account_circle_black_24dp" />
+
+    <ListView
+        android:id="@+id/recenziiLV"
+        android:layout_width="409dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/recenziiButtonID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iformatiiUtilizatorTV"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/userProfileToolbar"
+        android:layout_width="414dp"
+        android:layout_height="53dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:titleTextColor="@color/White"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,8 +9,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -22,12 +26,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbarID);
         setSupportActionBar(toolbar);
-        NavigationView navigationView =findViewById(R.id.navigationID);
+        NavigationView navigationView = findViewById(R.id.navigationID);
         drawerLayout =findViewById(R.id.drawerID);
         navigationView.setNavigationItemSelectedListener(this);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frameID, new ObiectiveTuristiceFragment()).commit();
         }
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("credentials");
+        View headerView = navigationView.getHeaderView(0);
+        TextView credentials = (TextView)headerView.findViewById(R.id.credentialsTV);
+        credentials.setText(username);
     }
 
     @Override
@@ -50,6 +59,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.userDrawerMenuID:
                 Intent intent = new Intent(this, UserProfile.class);
+                NavigationView navigationView =findViewById(R.id.navigationID);
+                View headerView = navigationView.getHeaderView(0);
+                TextView credentials = (TextView)headerView.findViewById(R.id.credentialsTV);
+                intent.putExtra("profileCredentials", credentials.getText().toString());
                 startActivity(intent);
         }
         drawerLayout.closeDrawer(GravityCompat.START);

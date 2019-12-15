@@ -20,8 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/obiectivTuristicPrimitTV"
-        android:textColor="@color/Black"
-        >
+        android:textColor="@color/Black">
     </TextView>
 
     <EditText
@@ -30,6 +29,12 @@
         android:hint="@string/adaugati_o_recenzie_hint_edit_text"
         android:id="@+id/recenzieET">
     </EditText>
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratingBarRecenzie">
+    </RatingBar>
 
     <Button
         android:layout_width="match_parent"

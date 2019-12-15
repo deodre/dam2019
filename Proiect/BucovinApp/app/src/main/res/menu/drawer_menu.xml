@@ -23,6 +23,7 @@
             android:title="@string/utilizator_drawer_menu"
             android:icon="@drawable/ic_account_circle_black_24dp">
         </item>
+
     </group>
 
 
