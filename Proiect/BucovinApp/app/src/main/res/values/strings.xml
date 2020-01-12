@@ -48,10 +48,14 @@
     <string name="anulare_schimbare_parola">Anulare</string>
     <string name="recenzie_modificare_text">Recenzie :</string>
     <string name="salveaza_rapoarte">Salveaza Rapoarte</string>
+    <string name="rezervarile_mele_text_buton">Rezervarile mele</string>
+    <string name="statistici_recenzii">Statistici Recenzii</string>
 
     <array name="tipuri_cazare">
         <item>Toate</item>
         <item>Hotel</item>
         <item>Pensiune</item>
     </array>
+    <string name="title_activity_localizare">Map</string>
+    <string name="harta">Harta</string>
 </resources>

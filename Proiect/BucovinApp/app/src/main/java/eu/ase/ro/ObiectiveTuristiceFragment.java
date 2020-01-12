@@ -1,4 +1,4 @@
-package dam.ase.ro;
+package eu.ase.ro;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -46,6 +46,15 @@ public class ObiectiveTuristiceFragment extends Fragment {
                     ObiectivTuristicAdapter obiectivTuristicAdapter = new ObiectivTuristicAdapter(getActivity(),R.layout.obiectiv_turistic_item_layout, obiective);
                     listView.setAdapter(obiectivTuristicAdapter);
 
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Intent intent = new Intent(getActivity(), LocalizareActivity.class);
+                            intent.putExtra("Obiectiv Turistic", obiective.get(position));
+                            startActivity(intent);
+                        }
+                    });
+
                     listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                         @Override
                         public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -59,7 +68,7 @@ public class ObiectiveTuristiceFragment extends Fragment {
                 }
             }
         };
-        getJSONObiectiveTuristice.execute("https://api.myjson.com/bins/y2a3k");
+        getJSONObiectiveTuristice.execute("https://api.myjson.com/bins/8r1v2");
         return view;
     }
 

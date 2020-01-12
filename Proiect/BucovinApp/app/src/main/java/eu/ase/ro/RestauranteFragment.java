@@ -1,15 +1,21 @@
-package dam.ase.ro;
+package eu.ase.ro;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +42,7 @@ public class RestauranteFragment extends Fragment {
                 listView.setAdapter(restaurantAdapter);
             }
         };
-        getJSONRestaurante.execute("https://api.myjson.com/bins/y2a3k");
+        getJSONRestaurante.execute("https://api.myjson.com/bins/8r1v2");
         return view;
     }
 }

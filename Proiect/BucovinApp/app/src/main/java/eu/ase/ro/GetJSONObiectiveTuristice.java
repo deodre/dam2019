@@ -1,4 +1,4 @@
-package dam.ase.ro;
+package eu.ase.ro;
 
 import android.os.AsyncTask;
 
@@ -43,7 +43,9 @@ public class GetJSONObiectiveTuristice extends AsyncTask<String, Void, List<Obie
                     ObiectivTuristic obiectivTuristic = new ObiectivTuristic(
                             obiectivTuristicJSON.getString("denumire"),
                             obiectivTuristicJSON.getString("tip"),
-                            obiectivTuristicJSON.getInt("anulConstructiei")
+                            obiectivTuristicJSON.getInt("anulConstructiei"),
+                            obiectivTuristicJSON.getDouble("coordonateV"),
+                            obiectivTuristicJSON.getDouble("coordonateV1")
                     );
                     result.add(obiectivTuristic);
                 }

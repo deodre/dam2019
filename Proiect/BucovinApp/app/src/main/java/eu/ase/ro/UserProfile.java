@@ -1,4 +1,4 @@
-package dam.ase.ro;
+package eu.ase.ro;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -41,7 +41,12 @@ public class UserProfile extends AppCompatActivity {
         String username = intent.getStringExtra("profileCredentials");
         TextView infoUtilizatorTV = findViewById(R.id.iformatiiUtilizatorTV);
         database = Room.databaseBuilder(this, Database.class, "Users").allowMainThreadQueries().build();
-        infoUtilizatorTV.setText(database.getUserDAO().selectSearchUserByUsername(username).toString());
+        User user = database.getUserDAO().selectSearchUserByUsername(username);
+        String infoUtilizator = " Utilizator: " + user.getUsername() + "\n"
+                                + " Nume: " + user.getNume() + "\n"
+                                + " Preunume: " + user.getPrenume() + "\n"
+                                + " Email: " + user.getEmail();
+        infoUtilizatorTV.setText(infoUtilizator);
     }
 
     public void metodaLogOut(View view) {
@@ -62,7 +67,7 @@ public class UserProfile extends AppCompatActivity {
         List<Recenzie> recenzii = database.getRecenzieDAO().selectToateRecenziile(database.getUserDAO().selectSearchUserByUsername(username).getId());
         ListView recenziiLV = findViewById(R.id.recenziiLV);
 
-        ArrayAdapter<Recenzie> recenziiAdapter = new ArrayAdapter<Recenzie>(this,android.R.layout.simple_list_item_1,recenzii);
+        RecenzieAdapter recenziiAdapter = new RecenzieAdapter(this, R.layout.recenzie_item_layout,recenzii);
         recenziiLV.setAdapter(recenziiAdapter);
 
         recenziiLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -92,7 +97,7 @@ public class UserProfile extends AppCompatActivity {
         List<Recenzie> recenzii = database.getRecenzieDAO().selectRecenziiPozitive(database.getUserDAO().selectSearchUserByUsername(username).getId());
         ListView recenziiLV = findViewById(R.id.recenziiLV);
 
-        ArrayAdapter<Recenzie> recenziiAdapter = new ArrayAdapter<Recenzie>(this,android.R.layout.simple_list_item_1,recenzii);
+        RecenzieAdapter recenziiAdapter = new RecenzieAdapter(this, R.layout.recenzie_item_layout,recenzii);
         recenziiLV.setAdapter(recenziiAdapter);
 
         recenziiLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -133,6 +138,13 @@ public class UserProfile extends AppCompatActivity {
             editor.putString("password", null);
             editor.apply();
             Intent intent2 = new Intent(this, StartActivity.class);
+            startActivity(intent2);
+        }
+        else if(id == R.id.statisticiRecenzii) {
+            Intent intent = getIntent();
+            String username = intent.getStringExtra("profileCredentials");
+            Intent intent2 = new Intent(this, StatisticiPopActivity.class);
+            intent2.putExtra("username", username);
             startActivity(intent2);
         }
         else {
@@ -219,4 +231,5 @@ public class UserProfile extends AppCompatActivity {
 
         }
     }
+
 }

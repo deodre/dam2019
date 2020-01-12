@@ -138,6 +138,7 @@
                 android:layout_height="wrap_content">
 
                 <CheckBox
+                    android:id="@+id/familieCopilCB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/familie_cu_copil_text_check_box_rezervare">

@@ -1,4 +1,4 @@
-package dam.ase.ro;
+package eu.ase.ro;
 
 import java.util.Date;
 
@@ -6,17 +6,26 @@ public class Rezervare {
 
     private String nume;
     private String prenume;
-    private Date checkin;
-    private Date checkout;
+    private String checkin;
+    private String checkout;
     private boolean familieCopil;
 
-    public Rezervare(String nume, String prenume, Date checkin, Date checkout, boolean familieCopil) {
+    public Rezervare(String nume, String prenume, String checkin, String checkout, boolean familieCopil) {
         this.nume = nume;
         this.prenume = prenume;
         this.checkin = checkin;
         this.checkout = checkout;
         this.familieCopil = familieCopil;
     }
+
+    public Rezervare() {
+        this.nume = null;
+        this.prenume = null;
+        this.checkin = null;
+        this.checkout = null;
+        this.familieCopil = false;
+    }
+
 
     public String getNume() {
         return nume;
@@ -34,19 +43,19 @@ public class Rezervare {
         this.prenume = prenume;
     }
 
-    public Date getCheckin() {
+    public String getCheckin() {
         return checkin;
     }
 
-    public void setCheckin(Date checkin) {
+    public void setCheckin(String checkin) {
         this.checkin = checkin;
     }
 
-    public Date getCheckout() {
+    public String getCheckout() {
         return checkout;
     }
 
-    public void setCheckout(Date checkout) {
+    public void setCheckout(String checkout) {
         this.checkout = checkout;
     }
 

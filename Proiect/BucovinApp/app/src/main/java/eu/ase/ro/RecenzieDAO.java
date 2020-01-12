@@ -1,6 +1,7 @@
-package dam.ase.ro;
+package eu.ase.ro;
 
 import androidx.room.Dao;
+import androidx.room.ForeignKey;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -11,6 +12,9 @@ public interface RecenzieDAO {
 
     @Insert
     public void insertRecenzie(Recenzie recenzie);
+
+    @Query("select * from recenzii where rating=:rating and userID=:userID;")
+    public List<Recenzie> selectRecenziiDupaRating(float rating, int userID);
 
     @Query("select * from recenzii where userID=:userID;")
     public List<Recenzie> selectToateRecenziile(int userID);

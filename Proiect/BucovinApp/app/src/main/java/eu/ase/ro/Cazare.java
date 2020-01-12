@@ -1,4 +1,4 @@
-package dam.ase.ro;
+package eu.ase.ro;
 
 import android.os.Parcel;
 import android.os.Parcelable;

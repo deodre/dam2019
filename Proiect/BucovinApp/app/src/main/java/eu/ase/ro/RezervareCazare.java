@@ -1,22 +1,32 @@
-package dam.ase.ro;
+package eu.ase.ro;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class RezervareCazare extends AppCompatActivity {
 
@@ -53,6 +63,12 @@ public class RezervareCazare extends AppCompatActivity {
         dataIntrare.set(datePicker.getYear(),datePicker.getMonth(), datePicker.getDayOfMonth(), timePicker.getCurrentHour(), timePicker.getCurrentMinute());
         String dataO = simpleDateFormat.format(dataIesire.getTime());
 
+        CheckBox familieCopilCB = findViewById(R.id.familieCopilCB);
+        boolean checkboxResult = false;
+        if(familieCopilCB.isChecked()) {
+            checkboxResult = true;
+        }
+
         if(textNume.equals("") || textPrenume.equals("")) {
             Toast.makeText(this,"Completati spatiile libere", Toast.LENGTH_SHORT).show();
         } else {
@@ -60,10 +76,15 @@ public class RezervareCazare extends AppCompatActivity {
             stringBuilder.append(textNume).append(" ").append(textPrenume).append("\nCheck-in: ").append(dataI).append("\nCheck-out: ").append(dataO);
             String rezervare = stringBuilder.toString();
 
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference myRef = database.getReference("message");
+            Rezervare r = new Rezervare(textNume, textPrenume, dataI, dataO, checkboxResult);
 
-            myRef.setValue("Hello, World!");
+            Intent intent2 = getIntent();
+            Cazare cazare = intent2.getParcelableExtra("Cazare");
+
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference().child("rezervare " + cazare.getDenumire());
+
+            myRef.push().setValue(r);
 
             Intent intent = new Intent();
             intent.putExtra("Rezervare", rezervare);

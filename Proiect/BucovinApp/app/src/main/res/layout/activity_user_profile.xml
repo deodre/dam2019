@@ -29,7 +29,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iformatiiUtilizatorTV"
-        app:layout_constraintVertical_bias="0.523" />
+        app:layout_constraintVertical_bias="0.655" />
 
     <Button
         android:id="@+id/recenziiPozitiveButtonID"
@@ -42,7 +42,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recenziiButtonID"
-        app:layout_constraintVertical_bias="0.255" />
+        app:layout_constraintVertical_bias="0.488" />
 
     <Button
         android:id="@+id/logOutButtonID"
@@ -90,6 +90,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

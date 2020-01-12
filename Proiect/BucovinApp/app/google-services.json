@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "107122215010",
+    "firebase_url": "https://bucovinapp-dfc6f.firebaseio.com",
+    "project_id": "bucovinapp-dfc6f",
+    "storage_bucket": "bucovinapp-dfc6f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107122215010:android:18b814d61ea4dfb713e93b",
+        "android_client_info": {
+          "package_name": "eu.ase.ro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "107122215010-p6kkaimvqh15a8rqusectq02jpgn69dl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "eu.ase.ro",
+            "certificate_hash": "726335df57d6071c543de99d93d95dfd061f801e"
+          }
+        },
+        {
+          "client_id": "107122215010-sva684i1j0coga16a9mgt3tq0g1ttaq6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvPAk2HYP5vXUnuTkj6QQtxVl5HKJz6Bs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "107122215010-sva684i1j0coga16a9mgt3tq0g1ttaq6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

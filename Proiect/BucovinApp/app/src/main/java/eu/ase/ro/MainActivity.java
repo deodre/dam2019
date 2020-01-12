@@ -1,4 +1,4 @@
-package dam.ase.ro;
+package eu.ase.ro;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -54,6 +54,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.frameID,new RestauranteFragment()).commit();
                 toolbar.setTitle("Restaurante");
                 setSupportActionBar(toolbar);
+                break;
+            case R.id.hartaID:
+                Intent intentMap = new Intent(this, HartaPopActivity.class);
+                startActivity(intentMap);
                 break;
             case R.id.userDrawerMenuID:
                 Intent intent = new Intent(this, UserProfile.class);

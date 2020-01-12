@@ -2,6 +2,7 @@ package eu.ase.ro;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -39,9 +40,11 @@ public class LocalizareActivity extends FragmentActivity implements OnMapReadyCa
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        Intent intent = getIntent();
+        ObiectivTuristic obiectivTuristic = intent.getParcelableExtra("Obiectiv Turistic");
+
+        LatLng coordonate = new LatLng(obiectivTuristic.getCoordonateV(), obiectivTuristic.getCoordonateV1());
+        mMap.addMarker(new MarkerOptions().position(coordonate).title(obiectivTuristic.getDenumire()));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordonate, 16));
     }
 }

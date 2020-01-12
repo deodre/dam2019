@@ -1,4 +1,4 @@
-package dam.ase.ro;
+package eu.ase.ro;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -45,6 +45,25 @@ public class CazareFragment extends Fragment {
                     CazareAdapter cazareAdapter = new CazareAdapter(getActivity(),R.layout.cazare_item_layout, locatiiCazare);
                     listView.setAdapter(cazareAdapter);
 
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Intent intent = new Intent(getActivity(),RezervariExistenteActivity.class);
+                            intent.putExtra("Cazare", locatiiCazare.get(position));
+                            startActivity(intent);
+                        }
+                    });
+
+                    listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                        @Override
+                        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                            Intent intent = new Intent(getActivity(),RezervareCazare.class);
+                            intent.putExtra("Cazare", locatiiCazare.get(position));
+                            startActivityForResult(intent, requestCode);
+                            return true;
+                        }
+                    });
+
                     Spinner spinner = view.findViewById(R.id.spinnerCazareID);
                     spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
@@ -52,6 +71,14 @@ public class CazareFragment extends Fragment {
                             if(position == 0) {
                                 CazareAdapter cazareAdapter = new CazareAdapter(getActivity(),R.layout.cazare_item_layout, locatiiCazare);
                                 listView.setAdapter(cazareAdapter);
+                                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                        Intent intent = new Intent(getActivity(),RezervariExistenteActivity.class);
+                                        intent.putExtra("Cazare", locatiiCazare.get(position));
+                                        startActivity(intent);
+                                    }
+                                });
                                 listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                                     @Override
                                     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -66,6 +93,14 @@ public class CazareFragment extends Fragment {
                                 List<Cazare> hoteluri = locatiiCazare.stream().filter(cazare -> cazare.getTip().contains("Hotel")).collect(Collectors.toList());
                                 CazareAdapter hoteluriAdapter = new CazareAdapter(getActivity(),R.layout.cazare_item_layout, hoteluri);
                                 listView.setAdapter(hoteluriAdapter);
+                                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                        Intent intent = new Intent(getActivity(),RezervariExistenteActivity.class);
+                                        intent.putExtra("Cazare", hoteluri.get(position));
+                                        startActivity(intent);
+                                    }
+                                });
                                 listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                                     @Override
                                     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -79,6 +114,14 @@ public class CazareFragment extends Fragment {
                                 List<Cazare> pensiuni = locatiiCazare.stream().filter(cazare -> cazare.getTip().contains("Pensiune")).collect(Collectors.toList());
                                 CazareAdapter pensiuniAdapter = new CazareAdapter(getActivity(),R.layout.cazare_item_layout, pensiuni);
                                 listView.setAdapter(pensiuniAdapter);
+                                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                        Intent intent = new Intent(getActivity(),RezervariExistenteActivity.class);
+                                        intent.putExtra("Cazare", pensiuni.get(position));
+                                        startActivity(intent);
+                                    }
+                                });
                                 listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                                     @Override
                                     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -99,7 +142,7 @@ public class CazareFragment extends Fragment {
                 }
             }
         };
-        getJSONCazare.execute("https://api.myjson.com/bins/y2a3k");
+        getJSONCazare.execute("https://api.myjson.com/bins/8r1v2");
 
         return view;
     }

@@ -1,4 +1,4 @@
-package dam.ase.ro;
+package eu.ase.ro;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
