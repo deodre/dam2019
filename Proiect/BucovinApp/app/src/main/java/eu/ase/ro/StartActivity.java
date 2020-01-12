@@ -1,4 +1,4 @@
-package eu.ase.ro;
+package dam.ase.ro;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
@@ -6,7 +6,6 @@ import androidx.room.Room;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -39,7 +38,10 @@ public class StartActivity extends AppCompatActivity {
         if(username.equals("") || password.equals("")) {
             Toast.makeText(this, "Please provide credentials", Toast.LENGTH_SHORT).show();
         }
-        if(database.getUserDAO().selectSearchUserByUsername(username) != null && database.getUserDAO().selectSearchUserByPassword(password) != null) {
+        if(database.getUserDAO().selectSearchUserByUsername(username) != null &&
+                database.getUserDAO().selectSearchUserByPassword(password) != null) {
+
+
             if(checkBox.isChecked()) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("username", username);

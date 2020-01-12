@@ -1,9 +1,6 @@
-package eu.ase.ro;
+package dam.ase.ro;
 
-import android.database.AbstractWindowedCursor;
 import android.os.AsyncTask;
-import android.util.JsonReader;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;

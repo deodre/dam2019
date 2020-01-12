@@ -1,4 +1,4 @@
-package eu.ase.ro;
+package dam.ase.ro;
 
 import androidx.room.RoomDatabase;
 

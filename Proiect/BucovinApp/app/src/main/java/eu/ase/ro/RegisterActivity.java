@@ -1,4 +1,4 @@
-package eu.ase.ro;
+package dam.ase.ro;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
 

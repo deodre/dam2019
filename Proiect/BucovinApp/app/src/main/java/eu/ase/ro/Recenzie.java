@@ -1,4 +1,4 @@
-package eu.ase.ro;
+package dam.ase.ro;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -8,9 +8,8 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-import static androidx.room.ForeignKey.CASCADE;
-
-@Entity(tableName = "recenzii", foreignKeys = @ForeignKey(entity = User.class, parentColumns = "ID", childColumns = "userID", onDelete = ForeignKey.CASCADE))
+@Entity(tableName = "recenzii", foreignKeys = @ForeignKey(entity = User.class,
+        parentColumns = "ID", childColumns = "userID", onDelete = ForeignKey.CASCADE))
 public class Recenzie implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "ID")

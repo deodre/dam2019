@@ -1,4 +1,4 @@
-package eu.ase.ro;
+package dam.ase.ro;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -84,7 +84,7 @@ public class  User {
                 ", nume='" + nume + '\'' +
                 ", prenume='" + prenume + '\'' +
                 ", email='" + email + '\'' +
-                ", parola='" + parola + '\'' +
+                ", parola='" + parola    + '\'' +
                 '}';
     }
 }

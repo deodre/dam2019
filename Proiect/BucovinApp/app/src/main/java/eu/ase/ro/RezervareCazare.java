@@ -1,4 +1,4 @@
-package eu.ase.ro;
+package dam.ase.ro;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -12,9 +12,9 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -59,6 +59,11 @@ public class RezervareCazare extends AppCompatActivity {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(textNume).append(" ").append(textPrenume).append("\nCheck-in: ").append(dataI).append("\nCheck-out: ").append(dataO);
             String rezervare = stringBuilder.toString();
+
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference("message");
+
+            myRef.setValue("Hello, World!");
 
             Intent intent = new Intent();
             intent.putExtra("Rezervare", rezervare);
